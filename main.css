@@ -42,13 +42,6 @@ div > img {
   border-radius: 5px 0 0 5px;
   color: black;
 }
-.warp {
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 .searchButton {
   border: 2px solid #00b4cc;
   background: #00b4cc;
@@ -84,59 +77,57 @@ ul.sign > li > a:hover {
   color: black;
   text-decoration: underline;
 }
-ul.menu {
-  list-style-type: none;
+.navbar {
   overflow: hidden;
   background-color: #333;
-  border: 1px solid #ccc;
-  border-width: 1px 0;
-  position: relative;
-  text-align: center;
 }
-ul.menu > li {
-  display: inline;
-}
-ul.menu > li > a {
-  display: inline-block;
+.navbar a {
+  float: left;
+  font-size: 16px;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  padding: 10px;
-  flood-opacity: 0%;
 }
-ul.menu > li > a:hover {
-  /*background-color: red;*/
-  border-bottom: 1px solid red;
-  color: red;
-  transform: scale(1.2);
-  transition: ease 0.8s;
+.subnav {
+  float: left;
+  overflow: hidden;
 }
-.sublist {
-  visibility: hidden;
-  display: none !important;
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  cursor: pointer;
+}
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: red;
+}
+.subnav-content {
+  display: none;
   position: absolute;
+  left: 0;
+  background-color: red;
+  width: 100%;
   z-index: 1;
-  /*opacity: 1;*/
-  /*transition: ease 1s;*/
 }
-.sub:hover .sublist {
-  visibility: visible;
-  position: relative;
-  opacity: 1;
-  display: block !important;
-  padding: 5px;
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
 }
-/*.sublist::after {
-  content: " ";
-  border-width: 10px;
-  border-style: solid;
-  border-color: transparent transparent lightblue transparent;
-  position: absolute;
-  bottom: 100%;
-  left: 15%;
-}*/
-h2.title {
+.subnav-content a:hover {
+  background-color: white;
+  color: black;
+}
+.subnav:hover .subnav-content {
+  display: block;
+}
+section>h1.title {
   background-color: gray;
   color: turquoise;
   padding: 10px;
@@ -148,7 +139,6 @@ div.games {
   display: flex;
   flex-wrap: wrap;
 }
-
 div.game {
   width: 25%;
   padding: 20px;
@@ -201,21 +191,7 @@ div.game img {
   cursor: pointer;
 }
 
-/*div.game img:hover {
 
-}*/
-
-@media screen and (max-width: 800px) {
-  body {
-    background-color: dodgerblue;
-  }
-  div.game {
-    width: 50%;
-  }
-  div.game > div {
-    background-color: silver;
-  }
-}
 footer {
   position: relative;
   width: 100%;
@@ -238,13 +214,13 @@ footer .container .noi-dung {
 footer .container .noi-dung.about {
   width: 40%;
 }
-footer .container .noi-dung.about h3 {
+footer .container .noi-dung.about h2 {
   position: relative;
   color: #fff;
   font-weight: 500;
   margin-bottom: 15px;
 }
-footer .container .noi-dung.about h3:before {
+footer .container .noi-dung.about h2:before {
   content: "";
   position: absolute;
   bottom: -5px;
@@ -308,13 +284,13 @@ ul.social-icon li:nth-child(4) a:hover {
   color: #fff;
   font-size: 20px;
 }
-.links h3 {
+.links h2 {
   position: relative;
   color: #fff;
   font-weight: 500;
   margin-bottom: 15px;
 }
-.links h3::before {
+.links h2::before {
   content: "";
   position: absolute;
   bottom: -5px;
@@ -339,13 +315,13 @@ ul.social-icon li:nth-child(4) a:hover {
 .links ul li a:hover {
   color: #fff;
 }
-.contact h3 {
+.contact h2 {
   position: relative;
   color: #fff;
   font-weight: 500;
   margin-bottom: 15px;
 }
-.contact h3::before {
+.contact h2::before {
   content: "";
   position: absolute;
   bottom: -5px;
@@ -413,24 +389,7 @@ ul.social-icon li:nth-child(4) a:hover {
   outline: 0;
   padding: 8px 4px;
 }
-@media (max-width: 768px) {
-  footer {
-    padding: 40px;
-  }
-  footer .container {
-    flex-direction: column;
-  }
-  footer .container .noi-dung {
-    margin-right: 0;
-    margin-bottom: 40px;
-  }
-  footer .container,
-  .noi-dung.about,
-  .links,
-  .contact {
-    width: 100%;
-  }
-}
+
 #go {
   display: none;
   position: fixed;
@@ -450,16 +409,17 @@ ul.social-icon li:nth-child(4) a:hover {
   background-color: #fff;
   color: #000;
 }
-h4 {
+h3 {
   color: black;
 }
 .ngoisao {
   color: yellow;
 }
-section h3 {
+section h2 {
+  font-size: 30px;
   cursor: pointer;
 }
-h5 {
+h4 {
   color: seagreen;
 }
 .noi-dung > ul > li > a {
@@ -503,4 +463,56 @@ h5 {
   to {
     transform: rotate(1turn);
   }
+}
+@media screen and (max-width: 800px) {
+  body{
+    background-color: dodgerblue;
+    float: none;
+    width: 100%;
+    margin: 1em 2em;
+  }
+  div.game {
+    width: 50%;
+  }
+  div.game > div {
+    background-color: silver;
+  }
+}
+@media (max-width: 768px) {
+  body{
+    background-color: dodgerblue;
+    float: none;
+    width: 100%;
+  }
+  footer {
+    padding: 40px;
+  }
+  footer .container {
+    flex-direction: column;
+  }
+  footer .container .noi-dung {
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
+  footer .container,
+  .noi-dung.about,
+  .links,
+  .contact {
+    width: 100%;
+  }
+}
+@media screen
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+}
+.csw-media {
+  overflow: hidden;
+  display: inline-block;
+}
+.csw-media img {
+  transition: 0.8s;
+}
+.csw-media:hover img {
+  transform: scale(1.2, 1.2);
 }
